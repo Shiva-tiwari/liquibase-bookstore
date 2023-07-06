@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+        http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.8.xsd">
+
+
+    <!--    Demo 1-->
+    <changeSet id="Create Table Books" author="Shiva">
+        <createTable tableName="book">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_BOOK" />
+            </column>
+            <column name="name" type="varchar(100)">
+                <constraints nullable="true" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="Insert 3 Books" author="Shiva">
+        <insert tableName="book">
+            <column name="name" value="Book 1" />
+        </insert>
+        <insert tableName="book">
+            <column name="name" value="Book 2" />
+        </insert>
+        <insert tableName="book">
+            <column name="name" value="Book 3" />
+        </insert>
+    </changeSet>
+
+
+    <!--    Demo 2-->
+    <changeSet id="Create Table Author" author="Arpit">
+        <createTable tableName="author">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_AUTHOR" />
+            </column>
+            <column name="author_name" type="varchar(100)">
+                <constraints nullable="true" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="Add author_in books" author="Arpit">
+        <addColumn tableName="book">
+            <column name="AUTHOR_ID" type="int">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="Add FK Constraint" author="Arpit">
+        <addForeignKeyConstraint baseTableName="book" baseColumnNames="AUTHOR_ID" constraintName="FK_BOOK_AUTHOR_ID" referencedTableName="author"
+                                 referencedColumnNames="id" />
+    </changeSet>
+
+    <changeSet id="Add column isbn" author="Shiva">
+        <addColumn tableName="book">
+            <column name="isbn" type="varchar(199)">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+</databaseChangeLog>
