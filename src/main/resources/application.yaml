@@ -18,3 +18,5 @@ spring:
     log-startup-info: false
   liquibase:
       change-log: classpath:db/changelog/db-changelog.xml
+  profiles:
+    active: dev
