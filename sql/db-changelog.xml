@@ -67,4 +67,17 @@
         </addColumn>
     </changeSet>
 
+    <changeSet id="Insert into Author" author="Arpit">
+        <insert tableName="author">
+            <column name="author_name" value="Author 1" />
+        </insert>
+        <insert tableName="author">
+            <column name="author_name" value="Author 2" />
+        </insert>
+
+        <rollback>
+            <delete tableName="author" />
+        </rollback>
+    </changeSet>
+
 </databaseChangeLog>
