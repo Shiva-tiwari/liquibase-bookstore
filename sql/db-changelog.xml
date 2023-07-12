@@ -31,6 +31,10 @@
         <insert tableName="book">
             <column name="name" value="Book 3" />
         </insert>
+
+        <rollback>
+            <delete tableName="book" />
+        </rollback>
     </changeSet>
 
 
